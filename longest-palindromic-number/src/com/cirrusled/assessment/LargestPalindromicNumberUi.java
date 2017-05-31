@@ -66,7 +66,8 @@ public class LargestPalindromicNumberUi extends Application {
 	public Label createLabelWidget(String widgetName, GridPane grid, int col,
 			int row) {
 		Label label = new Label(widgetName);
-		grid.setConstraints(label, col, row); //positioning the label widget in layout.
+		grid.setConstraints(label, col, row); // positioning the label widget in
+												// layout.
 		return label;
 	}
 
@@ -83,7 +84,8 @@ public class LargestPalindromicNumberUi extends Application {
 	 */
 	public TextField createTextWidget(GridPane grid, int col, int row) {
 		TextField text = new TextField();
-		grid.setConstraints(text, col, row); //positioning the text widget in layout.
+		grid.setConstraints(text, col, row); // positioning the text widget in
+												// layout.
 		return text;
 	}
 
@@ -103,7 +105,8 @@ public class LargestPalindromicNumberUi extends Application {
 	public Button createButtonWidget(String widgetName, GridPane grid, int col,
 			int row) {
 		Button findButton = new Button(widgetName);
-		grid.setConstraints(findButton, col, row); //positioning the button widget in layout.
+		grid.setConstraints(findButton, col, row); // positioning the button
+													// widget in layout.
 		return findButton;
 	}
 
@@ -117,31 +120,31 @@ public class LargestPalindromicNumberUi extends Application {
 	 * @return The List with UI components
 	 */
 	public List<Node> addElementsToGrid(List<Node> nodes, GridPane grid) {
-		//Creating label widget
+		// Creating label widget
 		Label lowerLimitLabel = createLabelWidget("Lower Bound", grid, 0, 0);
 		nodes.add(lowerLimitLabel);
-		
-		//creating textbox widget
+
+		// creating textbox widget
 		TextField minValueInput = createTextWidget(grid, 1, 0);
 		nodes.add(minValueInput);
-		
-		//Creating label widget
+
+		// Creating label widget
 		Label upperLimitLabel = createLabelWidget("Upper Bound", grid, 0, 1);
 		nodes.add(upperLimitLabel);
-		
-		//creating textbox widget
+
+		// creating textbox widget
 		TextField maxValueInput = createTextWidget(grid, 1, 1);
 		nodes.add(maxValueInput);
-		
-		//Creating label widget
+
+		// Creating label widget
 		Label answerLabel = createLabelWidget("Answer", grid, 0, 2);
 		nodes.add(answerLabel);
-		
-		//creating textbox widget
+
+		// creating textbox widget
 		TextField answerInput = createTextWidget(grid, 1, 2);
 		nodes.add(answerInput);
-		
-		//creating button widget
+
+		// creating button widget
 		Button findButton = createButtonWidget("Search", grid, 1, 3);
 		nodes.add(findButton);
 
@@ -160,8 +163,8 @@ public class LargestPalindromicNumberUi extends Application {
 	public boolean validateInputs(TextField minValueInput,
 			TextField maxValueInput) {
 		int check = 0;
-		
-		//Validating the lower bound value entered
+
+		// Validating the lower bound value entered
 		try {
 			minValueInput.setStyle(null);
 			double min = Double.parseDouble(minValueInput.getText());
@@ -171,8 +174,8 @@ public class LargestPalindromicNumberUi extends Application {
 			minValueInput.setStyle("-fx-border-color:red");
 			check = 1;
 		}
-		
-		//Validating the upper bound value entered
+
+		// Validating the upper bound value entered
 		try {
 			maxValueInput.setStyle(null);
 			double max = Double.parseDouble(maxValueInput.getText());
@@ -182,9 +185,11 @@ public class LargestPalindromicNumberUi extends Application {
 			maxValueInput.setStyle("-fx-border-color:red");
 			check = 1;
 		}
-		
-		/*if upper bound value entered is less than lower bound value
-		then swap upper and lower bound values*/ 
+
+		/*
+		 * if upper bound value entered is less than lower bound value then swap
+		 * upper and lower bound values
+		 */
 		if (maxValue < minValue) {
 			minValueInput.setText(maxValue + "");
 			maxValueInput.setText(minValue + "");
@@ -206,12 +211,14 @@ public class LargestPalindromicNumberUi extends Application {
 		Boolean answer = ConfirmBox.display(
 				"Largest-Palindromic-Number-Finder", "Sure you want to close?");
 		if (answer) {
-			window.close(); //closing the window
+			window.close(); // closing the window
 		}
 	}
+
 	/**
-	 * The function finds the largest palindromic number by using the 
+	 * The function finds the largest palindromic number by using the
 	 * LargestPalindromicSearch service.
+	 * 
 	 * @return the largest palindromic number
 	 */
 	public String searchLongestPalindromicNumber() {
@@ -227,7 +234,7 @@ public class LargestPalindromicNumberUi extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage; // Stage variable
 		// setting title of UI
-		window.setTitle("Largest-Palindromic-Number-Finder"); 
+		window.setTitle("Largest-Palindromic-Number-Finder");
 		// handling close event
 		window.setOnCloseRequest(closeEvent -> {
 			closeEvent.consume();
@@ -241,8 +248,8 @@ public class LargestPalindromicNumberUi extends Application {
 		grid = setUpGrid(grid);
 
 		nodes = addElementsToGrid(nodes, grid);
-		
-		// Input value extraction from UI and validation 
+
+		// Input value extraction from UI and validation
 		try {
 			Button findButton = (Button) nodes.get(6);
 			TextField minValueInput = (TextField) nodes.get(1);
@@ -260,11 +267,11 @@ public class LargestPalindromicNumberUi extends Application {
 			System.out.println("incorrect type casting");
 		}
 		// adding the UI components to the grid layout.
-		grid.getChildren().addAll(nodes); 
-		
+		grid.getChildren().addAll(nodes);
+
 		// setting dimensions of UI window
-		Scene scene = new Scene(grid, 350, 200); 
-		
+		Scene scene = new Scene(grid, 350, 200);
+
 		window.setScene(scene);// hosting scene on stage
 		window.show();// displaying the UI.
 

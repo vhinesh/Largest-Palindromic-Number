@@ -56,5 +56,4 @@ public class LargestPalindromeSearch {
 		}
 		return false;
 	}
-
 }
