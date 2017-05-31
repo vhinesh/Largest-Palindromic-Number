@@ -5,6 +5,9 @@ import java.util.List;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -46,7 +49,34 @@ public class LongestPalindromicNumberUi extends Application
 	 */
 	public List<Node> addElementsToGrid(List<Node> nodes, GridPane grid)
 	{
-	
+		Label lowerLimitLabel = new Label("Lower Bound");
+		grid.setConstraints(lowerLimitLabel, 0, 0);
+		nodes.add(lowerLimitLabel);
+		
+		TextField minValueInput = new TextField();
+		grid.setConstraints(minValueInput, 1, 0);
+		nodes.add(minValueInput);
+		
+		Label upperLimitLabel = new Label("Upper Bound");
+		grid.setConstraints(upperLimitLabel, 0, 1);
+		nodes.add(upperLimitLabel);
+		
+		TextField maxValueInput = new TextField();
+		grid.setConstraints(maxValueInput, 1, 1);
+		nodes.add(maxValueInput);
+		
+		Label answerLabel = new Label("Answer");
+		grid.setConstraints(answerLabel, 0, 2);
+		nodes.add(answerLabel);
+		
+		TextField answerInput = new TextField();
+		grid.setConstraints(answerInput, 1, 2);
+		nodes.add(answerInput);
+		
+		Button findButton = new Button("Search");
+		grid.setConstraints(findButton, 1, 3);
+		nodes.add(findButton);
+		
 		return nodes;
 	}
 	
