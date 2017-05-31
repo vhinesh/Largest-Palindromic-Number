@@ -3,6 +3,8 @@ package com.cirrusled.assessment;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.callback.ConfirmationCallback;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -12,6 +14,13 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+
+/**
+ * The program provides a User Interface where the user can find the
+ * largest palindromic number within the given input range.
+ * @author vhineshravi
+ *
+ */
 public class LongestPalindromicNumberUi extends Application
 {
 	Stage window;
@@ -94,7 +103,6 @@ public class LongestPalindromicNumberUi extends Application
 	 * @param grid The grid object 
 	 * @return The List with UI components
 	 */
-	
 	public List<Node> addElementsToGrid(List<Node> nodes, GridPane grid)
 	{
 		Label lowerLimitLabel = createLabelWidget("Lower Bound", grid, 0, 0);
@@ -121,6 +129,24 @@ public class LongestPalindromicNumberUi extends Application
 		return nodes;
 	}
 	
+	public void validateInputs(List<Node> nodes )
+	{
+		
+	}
+	
+	/**
+	 * This function safely close the program
+	 */
+	private void closeProgram()
+	{
+		Boolean answer = ConfirmBox.display("Largest-Palindromic-Number-Finder",
+				"Sure you want to close?");
+		if(answer)
+		{
+			window.close();
+		}
+	}
+	
 	/**
 	 * The controller function
 	 */
@@ -129,6 +155,11 @@ public class LongestPalindromicNumberUi extends Application
 	{
 		window = primaryStage; //Stage variable
 		window.setTitle("Largest-Palindromic-Number-Finder"); //setting title of UI
+		//
+		window.setOnCloseRequest(closeEvent -> {
+			closeEvent.consume();
+			closeProgram();
+		});
 		
 		List<Node> nodes = new ArrayList<Node>(); //list to hold UI components
 		
@@ -137,6 +168,19 @@ public class LongestPalindromicNumberUi extends Application
 		grid = setUpGrid(grid);
 		
 		nodes = addElementsToGrid(nodes, grid);
+		
+		try
+		{
+		Button findButton = (Button) nodes.get(6);
+		findButton.setOnAction( clickEvent -> 
+		{
+			
+		}) ;
+		}
+		catch(ClassCastException except)
+		{
+			System.out.println("incorrect button cast");
+		}
 		
 		grid.getChildren().addAll(nodes); //adding the UI components to the grid layout.
 		
