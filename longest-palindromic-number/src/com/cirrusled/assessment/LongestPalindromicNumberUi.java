@@ -136,7 +136,7 @@ public class LongestPalindromicNumberUi extends Application
 	 */
 	public boolean validateInputs(TextField minValueInput,TextField maxValueInput )
 	{
-		boolean answer;
+		int check=0;
 		
 		try
 		{
@@ -148,7 +148,7 @@ public class LongestPalindromicNumberUi extends Application
 		catch(NumberFormatException nfe)
 		{
 			minValueInput.setStyle("-fx-border-color:red");
-			return false;
+			check=1;
 		}
 		
 		try
@@ -161,16 +161,22 @@ public class LongestPalindromicNumberUi extends Application
 		catch(NumberFormatException nfe)
 		{
 			maxValueInput.setStyle("-fx-border-color:red");
-			return false;
+			check=1;
 		}
 		
 		if(maxValue<minValue)
 		{
 			minValueInput.setText(maxValue+"");
 			maxValueInput.setText(minValue+"");
+			long temp = maxValue;
+			maxValue = minValue;
+			minValue = temp;
 
 		}
-		
+		if(check==1)
+		{
+			return false;
+		}
 		return true;
 	}
 	
@@ -186,7 +192,11 @@ public class LongestPalindromicNumberUi extends Application
 			window.close();
 		}
 	}
-	
+	public String searchLongestPalindromicNumber()
+	{
+		LongestPalindromeSearch lp = new LongestPalindromeSearch(minValue, maxValue);
+		return(lp.searchPalindrome());
+	}
 	/**
 	 * The controller function
 	 */
@@ -220,8 +230,7 @@ public class LongestPalindromicNumberUi extends Application
 			if(validateInputs(minValueInput,maxValueInput))
 			{
 				Answer.setText("");
-				
-				
+				Answer.setText(searchLongestPalindromicNumber());
 			}
 			else
 			{

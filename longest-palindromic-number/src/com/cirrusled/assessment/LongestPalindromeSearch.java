@@ -1,5 +1,4 @@
 package com.cirrusled.assessment;
-
 import javafx.scene.control.TextField;
 
 public class LongestPalindromeSearch 
