@@ -65,5 +65,4 @@ public class ConfirmBox {
 
 		return answer;
 	}
-
 }
