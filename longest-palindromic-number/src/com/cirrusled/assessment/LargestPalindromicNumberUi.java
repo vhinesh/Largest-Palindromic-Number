@@ -276,5 +276,4 @@ public class LargestPalindromicNumberUi extends Application {
 		window.show();// displaying the UI.
 
 	}
-
 }
