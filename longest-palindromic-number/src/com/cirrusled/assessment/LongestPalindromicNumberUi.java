@@ -41,40 +41,81 @@ public class LongestPalindromicNumberUi extends Application
 	}
 	
 	/**
+	 * The function creates the label widget.
+	 * 
+	 * @param widgetName Name of the label widget
+	 * @param grid the grid layout object
+	 * @param col column position
+	 * @param row row position
+	 * @return label created
+	 */
+	public Label createLabelWidget(String widgetName,GridPane grid, int col, int row)
+	{
+		Label label = new Label(widgetName);
+		grid.setConstraints(label, col, row);
+		return label;
+	}
+	
+	/**
+	 * The function creates the text widget.
+	 * 
+	 * @param grid the grid layout object
+	 * @param col column position
+	 * @param row row position
+	 * @return textfield created
+	 */
+	public TextField createTextWidget(GridPane grid, int col, int row)
+	{
+		TextField text = new TextField();
+		grid.setConstraints(text, col, row);
+		return text;
+	}
+	
+	/**
+	 * The function creates button widget.
+	 * 
+	 * @param widgetName Name of button the 
+	 * @param grid the grid object
+	 * @param col column position
+	 * @param row row position
+	 * @return
+	 */
+	public Button createButtonWidget(String widgetName,GridPane grid, int col, int row)
+	{
+		Button findButton = new Button(widgetName);
+		grid.setConstraints(findButton, col, row);
+		return findButton;
+	}
+	
+	/**
 	 * The function adds individual elements to grid layout.
 	 * 
 	 * @param nodes The List to store the individual objects.
 	 * @param grid The grid object 
 	 * @return The List with UI components
 	 */
+	
 	public List<Node> addElementsToGrid(List<Node> nodes, GridPane grid)
 	{
-		Label lowerLimitLabel = new Label("Lower Bound");
-		grid.setConstraints(lowerLimitLabel, 0, 0);
+		Label lowerLimitLabel = createLabelWidget("Lower Bound", grid, 0, 0);
 		nodes.add(lowerLimitLabel);
 		
-		TextField minValueInput = new TextField();
-		grid.setConstraints(minValueInput, 1, 0);
+		TextField minValueInput = createTextWidget(grid,1,0);
 		nodes.add(minValueInput);
 		
-		Label upperLimitLabel = new Label("Upper Bound");
-		grid.setConstraints(upperLimitLabel, 0, 1);
+		Label upperLimitLabel = createLabelWidget("Upper Bound", grid, 0, 1);
 		nodes.add(upperLimitLabel);
 		
-		TextField maxValueInput = new TextField();
-		grid.setConstraints(maxValueInput, 1, 1);
+		TextField maxValueInput = createTextWidget(grid,1,1);
 		nodes.add(maxValueInput);
 		
-		Label answerLabel = new Label("Answer");
-		grid.setConstraints(answerLabel, 0, 2);
+		Label answerLabel = createLabelWidget("Answer", grid, 0, 2);
 		nodes.add(answerLabel);
 		
-		TextField answerInput = new TextField();
-		grid.setConstraints(answerInput, 1, 2);
+		TextField answerInput = createTextWidget(grid,1,2);
 		nodes.add(answerInput);
 		
-		Button findButton = new Button("Search");
-		grid.setConstraints(findButton, 1, 3);
+		Button findButton = createButtonWidget("Search", grid, 1, 3);
 		nodes.add(findButton);
 		
 		return nodes;
