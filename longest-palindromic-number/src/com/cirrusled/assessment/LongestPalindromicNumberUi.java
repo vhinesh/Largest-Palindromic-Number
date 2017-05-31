@@ -24,7 +24,7 @@ import javafx.scene.Scene;
 public class LongestPalindromicNumberUi extends Application
 {
 	Stage window;
-	
+	long minValue, maxValue;
 	/**
 	 * The main function
 	 * @param args
@@ -137,8 +137,7 @@ public class LongestPalindromicNumberUi extends Application
 	public boolean validateInputs(TextField minValueInput,TextField maxValueInput )
 	{
 		boolean answer;
-		long minValue = 0;
-		long maxValue=0;
+		
 		try
 		{
 			minValueInput.setStyle(null);
@@ -154,7 +153,6 @@ public class LongestPalindromicNumberUi extends Application
 		
 		try
 		{
-			
 			maxValueInput.setStyle(null);
 			double max= Double.parseDouble(maxValueInput.getText());
 			maxValue = (long) max;
@@ -222,6 +220,7 @@ public class LongestPalindromicNumberUi extends Application
 			if(validateInputs(minValueInput,maxValueInput))
 			{
 				Answer.setText("");
+				
 				
 			}
 			else
