@@ -128,10 +128,52 @@ public class LongestPalindromicNumberUi extends Application
 		
 		return nodes;
 	}
-	
-	public void validateInputs(List<Node> nodes )
+	/**
+	 * This function validates the input ranges.
+	 * @param minValueInput lower bound value.
+	 * @param maxValueInput higher bound value.
+	 * @return boolean indicating if range is valid.
+	 */
+	public boolean validateInputs(TextField minValueInput,TextField maxValueInput )
 	{
+		boolean answer;
+		long minValue = 0;
+		long maxValue=0;
+		try
+		{
+			minValueInput.setStyle(null);
+			double min= Double.parseDouble(minValueInput.getText());
+			minValue = (long) min;
+			minValueInput.setText(minValue+"");
+		}
+		catch(NumberFormatException nfe)
+		{
+			minValueInput.setStyle("-fx-border-color:red");
+			return false;
+		}
 		
+		try
+		{
+			
+			maxValueInput.setStyle(null);
+			double max= Double.parseDouble(maxValueInput.getText());
+			maxValue = (long) max;
+			maxValueInput.setText(maxValue+"");
+		}
+		catch(NumberFormatException nfe)
+		{
+			maxValueInput.setStyle("-fx-border-color:red");
+			return false;
+		}
+		
+		if(maxValue<minValue)
+		{
+			minValueInput.setText(maxValue+"");
+			maxValueInput.setText(minValue+"");
+
+		}
+		
+		return true;
 	}
 	
 	/**
@@ -155,7 +197,7 @@ public class LongestPalindromicNumberUi extends Application
 	{
 		window = primaryStage; //Stage variable
 		window.setTitle("Largest-Palindromic-Number-Finder"); //setting title of UI
-		//
+		//handling close event
 		window.setOnCloseRequest(closeEvent -> {
 			closeEvent.consume();
 			closeProgram();
@@ -172,9 +214,20 @@ public class LongestPalindromicNumberUi extends Application
 		try
 		{
 		Button findButton = (Button) nodes.get(6);
+		TextField minValueInput = (TextField) nodes.get(1);
+		TextField maxValueInput = (TextField) nodes.get(3);
+		TextField Answer = (TextField) nodes.get(5);
 		findButton.setOnAction( clickEvent -> 
 		{
-			
+			if(validateInputs(minValueInput,maxValueInput))
+			{
+				Answer.setText("");
+				
+			}
+			else
+			{
+				Answer.setText("Invalid Input Range");
+			}
 		}) ;
 		}
 		catch(ClassCastException except)
